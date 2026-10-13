@@ -1,3 +1,20 @@
+      - name: Tulis settings.gradle yang benar dan tampilkan isi repo
+        run: |
+          rm -f settings.gradle.kts
+          cat > settings.gradle <<'EOF'
+          pluginManagement {
+              repositories { google(); mavenCentral(); gradlePluginPortal() }
+          }
+          dependencyResolutionManagement {
+              repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+              repositories { google(); mavenCentral() }
+          }
+          rootProject.name = "PalapaNetPortal"
+          include ":app"
+          EOF
+          echo "=== isi root ==="; ls -la
+          echo "=== isi app ==="; ls -la app || true
+          echo "=== app/src/main ==="; ls -la app/src/main || true
 name: Build APK
 
 on:
