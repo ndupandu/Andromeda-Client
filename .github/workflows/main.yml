@@ -20,8 +20,7 @@ jobs:
         with:
           gradle-version: 8.9
 
-      # Opsional: tanda tangan rilis tetap (supaya pembaruan APK bisa menimpa versi lama).
-      # Isi 4 secrets di repo: KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD (lihat README).
+      # Opsional: tanda tangan rilis tetap (isi 4 secrets, lihat README)
       - name: Siapkan keystore (bila ada)
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
